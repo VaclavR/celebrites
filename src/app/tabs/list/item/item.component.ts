@@ -8,11 +8,19 @@ import { CelebService} from '../../../celeb.service';
 })
 export class ItemComponent implements OnInit {
 
+  celService: CelebService;
+
   @Input() celebrity;
 
-  constructor() { }
+  constructor(celService: CelebService) {
+    this.celService = celService;
+   }
 
   ngOnInit() {
+  }
+
+  sendOpinion(opinion) {
+    this.celService.setOpinion({name: this.celebrity.name, opinion: opinion});
   }
 
 }

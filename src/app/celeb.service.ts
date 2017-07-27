@@ -1,15 +1,15 @@
 export class CelebService {
-  celebrites = [
+  private celebrites = [
     {
       name: 'Scarlett Johansson',
       img: 'scarlettjohansson-min.jpg',
-      desc: 'An American Actress.',
+      desc: 'An American Actress',
       opinion: ''
     },
     {
       name: 'Alber Einstein',
       img: 'alberteinstein-min.jpg',
-      desc: 'A German Scientist.',
+      desc: 'A German Scientist',
       opinion: ''
     },
     {
@@ -20,7 +20,7 @@ export class CelebService {
     },
     {
       name: 'Arnold Schwarzenegger',
-      img: 'arnoldschwarzenegger-min',
+      img: 'arnoldschwarzenegger-min.jpg',
       desc: 'An American Actor',
       opinion: ''
     },
@@ -45,7 +45,7 @@ export class CelebService {
     {
       name: 'Elon Musk',
       img: 'elonmusk-min.jpg',
-      desc: 'A Southafrican Entrepreneur',
+      desc: 'An American Entrepreneur',
       opinion: ''
     },
     {
@@ -62,7 +62,7 @@ export class CelebService {
     },
     {
       name: 'Joanna Jedrzejczyk',
-      img: 'joannajedrzejczyk-min.pg',
+      img: 'joannajedrzejczyk-min.jpg',
       desc: 'A Polish UFC Fighter',
       opinion: ''
     },
@@ -115,5 +115,21 @@ export class CelebService {
       opinion: ''
     }
   ];
+
+  setOpinion(opinion) {
+    const pos = this.celebrites.findIndex((celeb) => {
+      return celeb.name === opinion.name;
+    });
+    this.celebrites[pos].opinion = opinion.opinion;
+  }
+
+  showList(filter) {
+    if (filter === 'all') {
+      return this.celebrites.slice();
+    }
+    return this.celebrites.filter((celeb) => {
+      return filter === celeb.opinion;
+    });
+  }
 
 }

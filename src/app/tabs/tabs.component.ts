@@ -8,9 +8,25 @@ import { CelebService } from '../celeb.service';
 })
 export class TabsComponent implements OnInit {
 
-  constructor() { }
+  celebrites = [];
+  filter = 'all';
+  celService: CelebService;
+
+  constructor(celService: CelebService) {
+    this.celService = celService;
+   }
 
   ngOnInit() {
   }
+
+  setFilter(filter) {
+    this.filter = filter;
+  }
+
+  showList() {
+    this.celebrites = this.celService.showList(this.filter);
+    return this.celebrites;
+  }
+
 
 }

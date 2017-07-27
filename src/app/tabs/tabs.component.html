@@ -1,10 +1,10 @@
 <ul class="nav nav-pills">
-  <li role="presentation"><a>All</a></li>
-  <li role="presentation"><a>Popular</a></li>
-  <li role="presentation"><a>Hated</a></li>
-  <li role="presentation"><a>Ignored</a></li>
+  <li role="presentation" [ngClass]="{active: filter === 'all'}" (click)="setFilter('all')"><a>All</a></li>
+  <li role="presentation" [ngClass]="{active: filter === 'ilike'}" (click)="setFilter('ilike')"><a>Loved</a></li>
+  <li role="presentation" [ngClass]="{active: filter === 'ihate'}" (click)="setFilter('ihate')"><a>Hated</a></li>
+  <li role="presentation" [ngClass]="{active: filter === 'dcare'}" (click)="setFilter('dcare')"><a>Ignored</a></li>
 </ul>
 <div class="container">
-  <app-list></app-list>
+  <app-list [celebrites]="showList()"></app-list>
 </div>
 

@@ -1,0 +1,18 @@
+img {
+  padding-bottom: 20px;
+}
+
+p, h4 {
+  height: 40px;
+}
+.list-group-item {
+  margin-bottom: 30px;
+}
+
+ .btn-group {
+  float: right;
+}
+
+.clearfix {
+  clear: right;
+}
