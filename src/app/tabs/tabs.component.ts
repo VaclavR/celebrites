@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CelebService } from '../celeb.service';
 
 @Component({
   selector: 'app-tabs',
@@ -8,25 +7,10 @@ import { CelebService } from '../celeb.service';
 })
 export class TabsComponent implements OnInit {
 
-  celebrites = [];
-  filter = 'all';
-  celService: CelebService;
 
-  constructor(celService: CelebService) {
-    this.celService = celService;
-   }
+  constructor() {}
 
   ngOnInit() {
   }
-
-  setFilter(filter) {
-    this.filter = filter;
-  }
-
-  showList() {
-    this.celebrites = this.celService.showList(this.filter);
-    return this.celebrites;
-  }
-
 
 }

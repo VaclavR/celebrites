@@ -1,3 +1,10 @@
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+
+import { LogService } from './log.service';
+
+@Injectable()
+
 export class CelebService {
   private celebrites = [
     {
@@ -97,7 +104,7 @@ export class CelebService {
       opinion: ''
     },
     {
-      name: 'Theresa may',
+      name: 'Theresa May',
       img: 'theresamay-min.jpg',
       desc: 'A British Prime Minister',
       opinion: ''
@@ -116,11 +123,20 @@ export class CelebService {
     }
   ];
 
+  private logService: LogService;
+  opinionChange = new Subject<void>();
+
+  constructor(logService: LogService) {
+    this.logService = logService;
+  }
+
   setOpinion(opinion) {
-    const pos = this.celebrites.findIndex((celeb) => {
+    const position = this.celebrites.findIndex((celeb) => {
       return celeb.name === opinion.name;
     });
-    this.celebrites[pos].opinion = opinion.opinion;
+    this.logService.logOpinionChange(opinion);
+    this.celebrites[position].opinion = opinion.opinion;
+    this.opinionChange.next();
   }
 
   showList(filter) {
@@ -131,5 +147,14 @@ export class CelebService {
       return filter === celeb.opinion;
     });
   }
-
+  addNewCelebrity(celebrity) {
+    const position = this.celebrites.findIndex((celeb) => {
+      return celebrity.name === celeb.name;
+    });
+    if (position !== -1) {
+      return;
+    }
+    this.logService.logAddedCelebrity(celebrity.name);
+    this.celebrites.push(celebrity);
+  }
 }

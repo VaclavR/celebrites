@@ -4,13 +4,13 @@
       <h4 class="list-group-item-heading">{{celebrity.name}}</h4>
       <p class="list-group-item-text">{{celebrity.desc}}</p>
       <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" (click)="sendOpinion('ilike')">
+        <button type="button" class="btn btn-default" (click)="sendOpinion('loved')">
           <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
         </button>
-        <button type="button" class="btn btn-default" (click)="sendOpinion('ihate')">
+        <button type="button" class="btn btn-default" (click)="sendOpinion('hated')">
           <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
         </button>
-        <button type="button" class="btn btn-default" (click)="sendOpinion('dcare')">
+        <button type="button" class="btn btn-default" (click)="sendOpinion('ignored')">
           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </button>
       </div>

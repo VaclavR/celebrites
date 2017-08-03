@@ -1,0 +1,45 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="name">Celebrity Name</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      class="form-control"
+      required
+      #nameControl="ngModel"
+      ngModel>
+  </div>
+  <span class="help-block" *ngIf="nameControl.invalid && nameControl.touched">Please enter the name!</span>
+  <div class="form-group">
+    <label for="image">Image URL</label>
+    <input
+      type="text"
+      name="img"
+      id="image"
+      class="form-control"
+      ngModel>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input
+      type="text"
+      name="desc"
+      id="description"
+      class="form-control"
+      required
+      #descControl="ngModel"
+      ngModel>
+  </div>
+  <span class="help-block" *ngIf="descControl.invalid && descControl.touched">Please enter the description!</span>
+  <div class="form-group">
+    <label for="opininon"></label>
+    <select name="opinion" id="opinion" [ngModel]="defaultOpinion">
+      <option *ngFor="let opinion of opinions" [value]="opinion.value">
+        {{opinion.display}}
+      </option>
+    </select>
+  </div>
+  <button class="btn btn-primary" [disabled]="form.invalid">Add New Celebrity</button>
+
+</form>
