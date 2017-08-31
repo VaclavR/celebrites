@@ -6,6 +6,7 @@ import { LogService } from './log.service';
 @Injectable()
 
 export class CelebService {
+
   private celebrites = [
     {
       name: 'Scarlett Johansson',
